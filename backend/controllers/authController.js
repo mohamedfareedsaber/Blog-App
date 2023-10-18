@@ -108,6 +108,11 @@ module.exports.loginUserCtrl = asyncHandler(async (req, res) => {
       <a href="${link}">Verify</a>
     </div>`;
 
+    await sendEmail(user.email, "Verify Your Email", htmlTemplate);
+
+    return res.status(400).json({
+      message: "We sent to you an email, please verify your email address",
+    });
   }
 
   const token = user.generateAuthToken();

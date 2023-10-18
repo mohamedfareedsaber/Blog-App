@@ -6,8 +6,6 @@ const helmet = require("helmet");
 const hpp = require("hpp");
 const { errorHandler, notFound } = require("./middlewares/error");
 const cors = require("cors");
-const passport=require('passport')
-const cookiSession=require('cookie-session')
 require("dotenv").config();
 
 // Connection To Db
@@ -18,13 +16,6 @@ const app = express();
 
 // Middlewares
 app.use(express.json());
-app.use({
-  name:"session",
-  keys:['cyberwolve'],
-  maxAge:24*60*60*100
-})
-app.use(passport.initialize())
-app.use(passport.session())
 
 // Security Headers (helmet)
 app.use(helmet());
@@ -43,9 +34,7 @@ app.use(rateLimiting({
 
 // Cors Policy
 app.use(cors({
-  origin: "http://localhost:3000",
-  methods:"GET,POST,PUT,DELETE",
-  credentials:true
+  origin: "http://localhost:3000"
 }));
 
 // Routes

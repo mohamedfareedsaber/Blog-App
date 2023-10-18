@@ -1,7 +1,7 @@
 const Footer = () => {
     return ( 
         <footer style={styles} >
-            Copyright 2022 &copy;Mohamed Fareed
+            Copyright 2022 &copy;
         </footer>
     );
 }
